@@ -1,0 +1,19 @@
+# Format: [category|desc] [actualcategorynamenospaces|OMIT] [regexp]
+category  Merch       Merchandise
+category  Food        Dining
+category  Recurring   Phone/Cable
+category  Travel      Gas/Automotive 
+category  Recurring   Insurance 
+category  Recurring   Professional Services 
+category  Recurring   Fee/Interest Charge
+category  Recurring   Health Care
+category  Merch       Other Services
+category  Merch       Electronics
+category  Travel      Lodging|Airfare
+category  Recurring   Internet
+category  Travel      Other Travel
+category  OMIT        Payment/Credit
+desc      Recurring   LA FITNESS
+desc      Food        GIANT-EAGLE.*
+desc      Merch       STEAM PURCHASE.*
+desc      Food        TRADER JOE'S.*

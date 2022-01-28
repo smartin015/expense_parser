@@ -1,0 +1,22 @@
+Splitwise:
+  match: 'Scott'
+  hdr:
+    date: 'Date'
+    desc: 'Description'
+    category: 'Category'
+    debit: 'Scott'
+  negative_debit: True
+  rules: 'expenses_splitwise.csv'
+CapitalOne:
+  match: 'Card No.'
+  hdr:
+    date: 'Transaction Date'
+    desc: 'Description'
+    category: 'Category'
+    debit: 'Debit'
+  negative_debit: False
+  rules: 'expenses_credit.csv'
+Splitwise Empty: 
+  match: 'You have no '
+  pass: True
+

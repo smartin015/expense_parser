@@ -1,0 +1,25 @@
+# Format: [category|desc] [actualcategorynamenospaces|OMIT] [regexp]
+desc      OMIT        Settle all balances
+desc      OMIT        Total balance
+desc      OMIT        Rent
+desc      Food        .*Food.*
+desc      Merch       .*filament.*
+desc      Food        .*indian.*
+desc      Food        .*ramen.*
+category  OMIT        Payment
+category  Electric    Electricity
+category  Food        Dining out
+category  Food        Groceries
+category  Merch       General
+category  Recurring   Music
+category  Merch       Household supplies
+category  Merch       Liquor
+category  Travel      Hotel
+category  Merch       Games|Movies|Music|Sports|Electronics
+category  Merch       Furniture|Maintenance|Clothing
+category  Recurring   Mortgage|Pets|Rent|Services|Childcare|Education|Insurance|Taxes
+category  Recurring   Medical Expenses
+category  Merch       Gifts|Cleaning
+category  Travel      Bicycle|Bus/train|Car|Gas/fuel|Hotel|Parking|Plane|Taxi
+category  Recurring   Heat/gas|Trash|TV/Phone/Internet
+category  Water       Water
