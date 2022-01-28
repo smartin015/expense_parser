@@ -2,6 +2,7 @@ import csv
 import os
 import sys
 import re
+import yaml
 from dateutil import parser
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
@@ -80,24 +81,24 @@ for path in sys.argv[1:]:
     else:
         header_idx = 0
 
-    with open("./config/manifest.yaml") as f:
+    with open(os.path.join(os.path.dirname(__file__), "./config/manifest.yaml")) as f:
       manifest = yaml.safe_load(f.read())
 
     hdr = dict([(v,i) for (i, v) in enumerate(data[header_idx].split(","))])
     printer = None
-    for name, parser in manifest.items():
-      if parser['header_match'] in hdr.keys():
-          if parser.get('pass', False):
+    for name, cfg in manifest.items():
+      if cfg['match'] in hdr.keys():
+          if cfg.get('pass', False):
             continue
           # 'Transaction Date', 'Posted Date', 'Card No.', 'Description', 'Category', 'Debit', 'Credit'
           printer = TxnPrinter(
-                  date_idx = hdr[parser['hdr']['date']],
-                  desc_idx = hdr[parser['hdr']['desc']],
-                  category_idx = hdr[parser['hdr']['category']],
-                  debit_idx = hdr[parser['hdr']['debit']],
-                  negative_debit = parser['negative_debit'],
+                  date_idx = hdr[cfg['hdr']['date']],
+                  desc_idx = hdr[cfg['hdr']['desc']],
+                  category_idx = hdr[cfg['hdr']['category']],
+                  debit_idx = hdr[cfg['hdr']['debit']],
+                  negative_debit = cfg['negative_debit'],
                   )
-          printer.loadCategoryMap(os.path.join(os.path.dirname(__file__), f"./config/{parser['rules']}"))
+          printer.loadCategoryMap(os.path.join(os.path.dirname(__file__), f"./config/{cfg['rules']}"))
           break
 
     if printer is None:
@@ -110,6 +111,6 @@ for path in sys.argv[1:]:
         printed = printer.printRow(row)
         filestats[path] += 1 if printed else 0
 
-sys.stderr.write(f"Parsed {len(sys.argv[1:])} files:\n")
+sys.stderr.write(f"\n\n===================\nParsed {len(sys.argv[1:])} files:\n")
 for k,v in filestats.items():
     sys.stderr.write(f"{k.ljust(40)}\t{v} items parsed\n")

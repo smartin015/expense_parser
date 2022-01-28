@@ -1,4 +1,5 @@
 import requests
+import sys
 from bs4 import BeautifulSoup
 
 def winespiritsQuery(sku):
@@ -14,8 +15,14 @@ def winespiritsQuery(sku):
 
     response = requests.get('https://www.finewineandgoodspirits.com/webapp/wcs/stores/servlet/ProductDisplay', headers=headers, params=params)
     soup = BeautifulSoup(response.text, 'html.parser') 
-    price = soup.select(".productPrice")[0].get_text().replace("$", "")
-    return (soup.select("#name_ga")[0]['value'], float(price.strip().split("\n")[0]))
+    name = "UNPARSED_WINESPIRITS"
+    price = "-1"
+    try:
+        name = soup.select("#name_ga")[0]['value']
+        price = soup.select(".productPrice")[0].get_text().replace("$", "")
+    except Exception as e:
+        sys.stderr.write(repr(e) + "\n")
+    return (name, float(price.strip().split("\n")[0]))
 
 def all_queries():
     return [winespiritsQuery(sku) for sku in [

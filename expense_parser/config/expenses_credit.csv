@@ -1,4 +1,10 @@
 # Format: [category|desc] [actualcategorynamenospaces|OMIT] [regexp]
+desc      Recurring   LA FITNESS
+desc      Food        GIANT-EAGLE.*
+desc      Merch       STEAM PURCHASE.*
+desc      Food        TRADER JOE'S.*
+desc      Food        WHOLEFDS.*
+desc      Food        [Tt][Jj].*
 category  Merch       Merchandise
 category  Food        Dining
 category  Recurring   Phone/Cable
@@ -13,7 +19,5 @@ category  Travel      Lodging|Airfare
 category  Recurring   Internet
 category  Travel      Other Travel
 category  OMIT        Payment/Credit
-desc      Recurring   LA FITNESS
-desc      Food        GIANT-EAGLE.*
-desc      Merch       STEAM PURCHASE.*
-desc      Food        TRADER JOE'S.*
+desc      Merch       GOOGLE.*
+

@@ -1,4 +1,5 @@
 import requests
+import sys
 
 def geagleQuery(sku):
     headers = {
@@ -10,25 +11,25 @@ def geagleQuery(sku):
 
     response = requests.post('https://adapter.shop.gianteagle.com/api', headers=headers, data=data)
     if response.status_code != requests.codes.ok:
-        print("ERROR fetching geagle query - code ", response.status_code)
+        sys.stderr.write("ERROR fetching geagle query - code ", response.status_code)
         return ("ERROR", 0)
     j = response.json()
     if j is None:
-        print("Failed to convert geagle query to json")
+        sys.stderr.write("Failed to convert geagle query to json")
         return ("ERROR", 0)
     product = j["data"]["product"]
     if product is None:
-        print("No product result for sku ", sku)
+        sys.stderr.write("No product result for sku ", sku)
         return ("NOPRODUCT " + sku, 0.0)
     return (product["name"], float(product["price"]))
 
 def all_queries():
     return [geagleQuery(sku) for sku in [
-        "00030034000509",
-        "00030034000608",
-        "00030034027476",
-        "00000000046084",
-        "00030034935023",
+        "00030034000523", # eggs
+        "00030034000608", # whole milk
+        "00030034027476", # black beans
+        "00000000046084", # bulk garlic
+        "00030034935023", # white rice
         ]]
 
 
