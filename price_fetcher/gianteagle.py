@@ -19,13 +19,14 @@ def geagleQuery(sku):
         return ("ERROR", 0)
     product = j["data"]["product"]
     if product is None:
-        sys.stderr.write("No product result for sku ", sku)
+        sys.stderr.write("No product result for sku " + sku)
         return ("NOPRODUCT " + sku, 0.0)
     return (product["name"], float(product["price"]))
 
 def all_queries():
     return [geagleQuery(sku) for sku in [
-        "00030034000523", # eggs
+        "00077438555037", #eggs
+        #"00030034000523", # eggs
         "00030034000608", # whole milk
         "00030034027476", # black beans
         "00000000046084", # bulk garlic

@@ -1,7 +1,7 @@
 # Format: [category|desc] [actualcategorynamenospaces|OMIT] [regexp]
 desc      OMIT        Settle all balances
 desc      OMIT        Total balance
-desc      OMIT        Rent
+desc      Rent        Rent
 desc      Food        .*Food.*
 desc      Merch       .*filament.*
 desc      Food        .*indian.*
@@ -23,3 +23,6 @@ category  Merch       Gifts|Cleaning
 category  Travel      Bicycle|Bus/train|Car|Gas/fuel|Hotel|Parking|Plane|Taxi
 category  Recurring   Heat/gas|Trash|TV/Phone/Internet
 category  Water       Water
+desc      Food        .*Meal.*
+desc      Food        .*TJ.*
+desc      Food        .*GrubHub.*

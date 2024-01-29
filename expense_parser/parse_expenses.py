@@ -52,13 +52,16 @@ class TxnPrinter:
         if abs(debit) < 0.01:
             return False
 
-        category = row[self.category_idx]
+        if self.category_idx:
+            category = row[self.category_idx]
+        else:
+            category = ''
         for (field, regex, cat) in self.matchers:
             field = field.lower()
             if (field == "desc" and regex.match(row[self.desc_idx])):
                 category = cat
                 break
-            if (field == "category" and regex.match(row[self.category_idx])):
+            if (field == "category" and self.category_idx and regex.match(row[self.category_idx])):
                 category = cat
                 break
         if category == "OMIT":
@@ -88,13 +91,14 @@ for path in sys.argv[1:]:
     printer = None
     for name, cfg in manifest.items():
       if cfg['match'] in hdr.keys():
+          sys.stderr.write(f'Match on parser {name}\n')
           if cfg.get('pass', False):
             continue
           # 'Transaction Date', 'Posted Date', 'Card No.', 'Description', 'Category', 'Debit', 'Credit'
           printer = TxnPrinter(
                   date_idx = hdr[cfg['hdr']['date']],
                   desc_idx = hdr[cfg['hdr']['desc']],
-                  category_idx = hdr[cfg['hdr']['category']],
+                  category_idx = hdr.get(cfg['hdr']['category']),
                   debit_idx = hdr[cfg['hdr']['debit']],
                   negative_debit = cfg['negative_debit'],
                   )

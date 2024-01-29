@@ -5,6 +5,16 @@ desc      Merch       STEAM PURCHASE.*
 desc      Food        TRADER JOE'S.*
 desc      Food        WHOLEFDS.*
 desc      Food        [Tt][Jj].*
+desc      Merch       GOOGLE.*
+desc      Travel      Car Rental
+desc      Merch       JLCPCB*
+desc      Food        LOTUS FOOD COMPANY
+desc      Food        .*ROBERT WHOLEY.*
+desc      Food        PENNSYLVANIA MACARONI
+desc      Food        .*MARKET OUTLET.*
+desc      Food        HUEL
+desc      Food        .*Webstaurant.*
+desc      Recurring   .*Google Fi.*
 category  Merch       Merchandise
 category  Food        Dining
 category  Recurring   Phone/Cable
@@ -13,11 +23,10 @@ category  Recurring   Insurance
 category  Recurring   Professional Services 
 category  Recurring   Fee/Interest Charge
 category  Recurring   Health Care
+category  Recurring   Healthcare
 category  Merch       Other Services
 category  Merch       Electronics
 category  Travel      Lodging|Airfare
 category  Recurring   Internet
 category  Travel      Other Travel
 category  OMIT        Payment/Credit
-desc      Merch       GOOGLE.*
-

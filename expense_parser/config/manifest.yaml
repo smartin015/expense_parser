@@ -19,4 +19,12 @@ CapitalOne:
 Splitwise Empty: 
   match: 'You have no '
   pass: True
-
+Citi:
+  match: 'Status'
+  hdr:
+    date: 'Date'
+    desc: 'Description'
+    category: ''
+    debit: 'Debit'
+  negative_debit: False
+  rules: 'expenses_credit.csv'
