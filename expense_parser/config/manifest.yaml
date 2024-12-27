@@ -28,3 +28,12 @@ Citi:
     debit: 'Debit'
   negative_debit: False
   rules: 'expenses_credit.csv'
+Chase:
+  match: 'Memo'
+  hdr:
+    date: 'Transaction Date'
+    desc: 'Description'
+    category: 'Category'
+    debit: 'Amount'
+  negative_debit: True
+  rules: 'expenses_credit.csv'
